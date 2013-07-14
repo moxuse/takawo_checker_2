@@ -1,0 +1,24 @@
+!!! 5
+%html{ lang: 'ja' }
+  %head
+    %meta{ charst: 'utf-8' }
+    %title takawo杯チェッカー
+    = stylesheet_link_tag 'bootstrap_and_overrides', :media => "all"
+
+  %body
+    .navbar
+      .navbar-inner
+        .container-fluid
+          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand(href="#") takawo杯チェッカー
+          .container.nav-collapse
+            %ul.nav
+              %li= link_to "ホーム", index_path
+
+    .container-fluid
+      .row-fluid
+        .span10
+          = yield

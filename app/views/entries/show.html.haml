@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @entry.user_id
+%p
+  %b Content:
+  = @entry.content
+%p
+  %b Source url:
+  = @entry.source_url
+%p
+  %b Rt count:
+  = @entry.rt_count
+%p
+  %b Fav count:
+  = @entry.fav_count
+%p
+  %b Updated at:
+  = @entry.updated_at
+
+= link_to 'Edit', edit_entry_path(@entry)
+\|
+= link_to 'Back', entries_path

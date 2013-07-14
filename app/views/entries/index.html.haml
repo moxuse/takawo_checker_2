@@ -1,0 +1,29 @@
+%h1 Listing entries
+
+%table
+  %tr
+    %th User
+    %th Content
+    %th Source url
+    %th Rt count
+    %th Fav count
+    %th Updated at
+    %th
+    %th
+    %th
+
+  - @entries.each do |entry|
+    %tr
+      %td= entry.user_id
+      %td= entry.content
+      %td= entry.source_url
+      %td= entry.rt_count
+      %td= entry.fav_count
+      %td= entry.updated_at
+      %td= link_to 'Show', entry
+      %td= link_to 'Edit', edit_entry_path(entry)
+      %td= link_to 'Destroy', entry, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Entry', new_entry_path

@@ -1,0 +1,12 @@
+%h1 検索結果
+.results
+  - unless @results.nil?
+    %ul
+      - @results.each do |result|
+        %li
+          %ul
+            %li ユーザー：#{result.user.name}
+            %li 作品：#{result.content}
+            %li
+              出典：
+              = link_to "#{result.source_url}", result.source_url

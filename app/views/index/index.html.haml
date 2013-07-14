@@ -1,0 +1,5 @@
+.form-wrap
+  = form_tag(show_search_results_path) do
+    = field_set_tag do
+      = label_tag 'キーワード'
+      = text_field_tag 'keywords', nil, { :class => 'keywords' }
