@@ -1,4 +1,4 @@
-logfile = "#{Rails.root}/log/checked.log"
+logfile = "#{Rails.root}/lib/checked.log.txt"
 
 File.readlines(logfile).each do |line|
   results = line.scan(/(^|\s)(@|＠)(\w+)/)
