@@ -1,12 +1,9 @@
 %h1 検索結果
 .results
   - unless @results.nil?
-    %ul
-      - @results.each do |result|
-        %li
-          %ul
-            %li ユーザー：#{result.user.name}
-            %li 作品：#{result.content}
-            %li
-              出典：
-              = link_to "#{result.source_url}", result.source_url
+    - @results.each do |result|
+      %blockquote.twitter-tweet
+        %p #{result.content} ー @#{result.user.name}
+        = link_to '出典', result.source_url
+
+%script{ src: '//platform.twitter.com/widgets.js', async: nil, charset: 'utf-8' }
