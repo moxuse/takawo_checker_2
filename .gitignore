@@ -16,3 +16,5 @@
 /tmp
 
 /config/initializers/api_keys.rb
+
+lib/.DS_Store
