@@ -1,0 +1,8 @@
+= form_tag controller: :crawlers, action: :save_db do
+  = submit_tag
+  
+- @responses.each do |r|
+  = "text==#{r[:content]}  user_id===#{r[:user_id]} since_id===#{r[:tweet_id]}"
+  %br
+
+
