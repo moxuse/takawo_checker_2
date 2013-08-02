@@ -1,6 +1,8 @@
-%h1 Crawlers#get_words
-%p Find me in app/views/crawlers/get_words.html.haml
-
-- @res.each do |r|
+= form_tag controller: :crawlers, action: :save_db do
+  = submit_tag
+  
+- @responses.each do |r|
   = "text==#{r[:content]}  user_id===#{r[:user_id]} since_id===#{r[:tweet_id]}"
   %br
+
+

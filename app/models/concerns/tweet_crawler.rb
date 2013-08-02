@@ -8,7 +8,8 @@ class TweetCrawler
     @responses
   end
 
-  def search(since_id = 97668377518145539)
+  def search(since_id)
+    since_id = 97668377518145539 if since_id.nil?
     words = "#takawo杯"
     max_id = nil
     counter = 0
@@ -23,9 +24,6 @@ class TweetCrawler
 
       max_id = res.next_results? ? res.next_results[:max_id] : nil
       counter += 1
-      p "count___=#{counter}"
-      p "count___=#{max_id}"
-      # p  "next_results ===#{res.next_results[:max_id].to_i}"
       responses_collection << res.results
       break if max_id.nil? || counter > 150
     end
@@ -41,9 +39,10 @@ class TweetCrawler
           :content => attrs[:text],
           :tweet_id => attrs[:id],
           :user_id => attrs[:user][:id],
+          :user_name => attrs[:user][:name],
           :source_url => attrs[:url]
         }
       end
-    end.flatten!
+    end.flatten!.reverse
   end
 end
