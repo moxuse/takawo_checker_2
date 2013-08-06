@@ -4,12 +4,10 @@ class IndexController < ApplicationController
 	end
 
 	def search
-      keywords = params[:keywords].split(' ')
-      _log "keywords= #{keywords}"
-
-      @results = Entry.where('content LIKE ?', "%#{keywords[0]}%")
-      _log "results= #{@results.inspect}"
-
+      query = params[:keywords]
+      yahoo_res = YahooAPI.new(YAHOO_API_MORI_KEY, query).send.parse_json.keys
+      
+      @results = yahoo_res.collect { |res| Entry.where('content LIKE ?', "%#{res}%") }.flatten.uniq
       render 'index/search_results' and return
 	end
 end
