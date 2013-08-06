@@ -6,4 +6,9 @@
         %p #{result.content} ー @#{result.user.name}
         = link_to '出典', result.source_url
 
+  - unless @errors.nil?
+    - @errors.each do |error|
+      %blockquote.twitter-tweet
+        %p #{error}
+
 %script{ src: '//platform.twitter.com/widgets.js', async: nil, charset: 'utf-8' }
