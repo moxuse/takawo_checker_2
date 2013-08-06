@@ -5,7 +5,9 @@ class IndexController < ApplicationController
 
 	def search
       query = params[:keywords]
-      yahoo_res = YahooAPI.new(YAHOO_APP_ID, query).send.parse_json.keys
+      yahoo_res = YahooAPI.new(YAHOO_APP_ID, query).send.parse_json
+      yahoo_res = yahoo_res.present? ? yahoo_res.keys : query.split(" ")
+
       if Rails.env == "development"
         @results = yahoo_res.collect { |res| Entry.where('content LIKE ?', "%#{res}%") }.flatten.uniq
       else
